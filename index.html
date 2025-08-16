@@ -48,7 +48,7 @@
       display: none;
       z-index: 2;
       padding: 0 10px;
-      margin-top: -10vh; /* Kéo chữ lên cao hơn */
+      margin-top: -10vh;
     }
 
     .photo {
@@ -113,35 +113,35 @@
   <audio id="bg-music" src="https://nvk-coder.github.io/tangem/music.mp3"></audio>
 
   <!-- Danh sách ảnh -->
-  <img class="photo" src="https://i.ibb.co/yFGZ2tDZ/your-image1.jpg" alt="Ảnh 1" />
-  <img class="photo" src="https://i.ibb.co/gZLzfWy3/your-image2.jpg" alt="Ảnh 2" />
-  <img class="photo" src="https://i.ibb.co/wnbHrKh/your-image3.jpg" alt="Ảnh 3" />
-  <img class="photo" src="https://i.ibb.co/C37rzkvJ/your-image4.jpg" alt="Ảnh 4" />
-  <img class="photo" src="https://i.ibb.co/GvgTk1bQ/your-image5.jpg" alt="Ảnh 5" />
-  <img class="photo" src="https://i.ibb.co/4w2K6Ymm/your-image6.jpg" alt="Ảnh 6" />
-  <img class="photo" src="https://i.ibb.co/RkhbkYvX/your-image7.jpg" alt="Ảnh 7" />
-  <img class="photo" src="https://i.ibb.co/xqy8sp5R/your-image8.jpg" alt="Ảnh 8" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_202508162084d852f77d4610b7404e8dc792c960.jpg" alt="Ảnh 1" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_202508168b3830172b44dd52c4efc935685bd9fa.jpg" alt="Ảnh 2" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_20250816d6284f45dbcb7dae33bde1711d001286.jpg" alt="Ảnh 3" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_20250816fa6175a6ce8a921b295497091cf2f0b6.jpg" alt="Ảnh 4" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_20250816e8eb86220719325f872fa426c08351fc.jpg" alt="Ảnh 5" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_20250816a29a2b085d7c2ce0d9330fa263c9bc1a.jpg" alt="Ảnh 6" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_2025081638979a0b92dbe2d51a92935fb4bb5181.jpg" alt="Ảnh 7" />
+  <img class="photo" src="https://sf-static.upanhlaylink.com/img/image_20250816247ca62f99259981c7443dcaeef3bb65.jpg" alt="Ảnh 8" />
 
   <!-- Dòng chữ "Tôi yêu em" -->
-  <div id="love-text">Tôi yêu em</div>
-
-  <script>
+  <div id="love-text"> I Miss You </div>
+ <script>
     const texts = [
       "Hôm nay…",
       "",
-      "Ngày 18 tháng 8.",
+      "Ngày 18 tháng 8",
       "Bảy năm kể từ khi tôi và em bắt đầu một câu chuyện thật đẹp.",
+      "Khá là nhanh ha ^^",
       "",
       "Ngày ấy…",
       "",
-      "Chúng ta chỉ cần một buổi tan trường,",
-      "Một ly trà sữa,",
-      "Một ổ bánh mỳ,",
+      "Chúng ta chỉ cần một buổi tan trường",
+      "Một ly trà sữa",
+      "Một ổ bánh mỳ",
       "Hay một vòng xe đi dạo",
       "Chỉ cần bên cạnh nhau",
       "Là đã đủ Hạnh Phúc lắm rồi.",
       "",
-      "Chẳng nghĩ gì về tương lai,",
+      "Chẳng nghĩ gì về tương lai",
       "Cũng không phải lo toan điều gì…",
       "Ta chỉ nghĩ...",
       "Chỉ cần có nhau.",
@@ -165,11 +165,14 @@
       "",
       "Tôi hi vọng em sẽ luôn mỉm cười",
       "Bình An",
+      "Tự Tin",
+      "Thành Công",
       "...",
       "",
       "Dù có thế nào đi chăng nữa…",
       "Em vẫn là một phần tuổi trẻ mà tôi trân trọng.",
-      "Và 18 tháng 8… sẽ mãi nhắc tôi rằng…",
+      "Và 18 tháng 8…",
+      "Sẽ mãi nhắc tôi rằng",
       "Đã từng có một “chúng ta” thật đẹp.",
       "",
       "Cảm ơn em...."
@@ -181,30 +184,28 @@
     const loveText = document.getElementById("love-text");
 
     async function showTextAndImages() {
-        startBtn.style.display = "none";
-        textBox.style.display = "block";
-
-        // Phát nhạc
+      startBtn.style.display = "none";
+      textBox.style.display = "block";
+// Phát nhạc
         const bgMusic = document.getElementById("bg-music");
         bgMusic.currentTime = 0;
         bgMusic.play();
-
-        for (let i = 0; i < texts.length; i++) {
-          textBox.innerHTML = texts[i];
-          await new Promise((resolve) => setTimeout(resolve, 2200));
-        }
-
-        textBox.style.display = "none";
-
-        for (let i = 0; i < photos.length; i++) {
-          photos[i].classList.add("fade");
-          photos[i].style.display = "block";
-          await new Promise((resolve) => setTimeout(resolve, 3000));
-          photos[i].style.display = "none";
-        }
-
-        loveText.style.display = "block";
+      for (let i = 0; i < texts.length; i++) {
+        textBox.innerHTML = texts[i];
+        await new Promise((resolve) => setTimeout(resolve, 2200));
       }
+
+      textBox.style.display = "none";
+
+      for (let i = 0; i < photos.length; i++) {
+        photos[i].classList.add("fade");
+        photos[i].style.display = "block";
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        photos[i].style.display = "none";
+      }
+
+      loveText.style.display = "block";
+    }
 
     startBtn.addEventListener("click", showTextAndImages);
 const options = {
